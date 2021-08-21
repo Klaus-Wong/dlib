@@ -65,3 +65,26 @@ This library is licensed under the Boost Software License, which can be found in
 
 This research is based in part upon work supported by the Office of the Director of National Intelligence (ODNI), Intelligence Advanced Research Projects Activity (IARPA) under contract number 2014-14071600010. The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of ODNI, IARPA, or the U.S. Government.
 
+How to install dlib v19.9 or newer (w/ python bindings) from github on macOS and Ubuntu
+Pre-reqs:
+
+Have Python 3 installed. On macOS, this could be installed from homebrew or even via standard Python 3.6 downloaded installer from https://www.python.org/download. On Linux, just use your package manager.
+On macOS:
+Install XCode from the Mac App Store (or install the XCode command line utils).
+Have homebrew installed
+On Linux:
+For a full list of apt packages required, check out the example Dockerfile and copy what's installed there.
+These instructions assume you are using Ubuntu 16.04 or newer. If you are using 14.04, you can try these installation instructions instead to work around the old CMake version.
+These instructions assume you don't have an nVidia GPU and don't have Cuda and cuDNN installed and don't want GPU acceleration (since none of the current Mac models support this).
+Clone the code from github:
+
+git clone https://github.com/davisking/dlib.git
+Build the main dlib library (optional if you just want to use Python):
+
+cd dlib
+mkdir build; cd build; cmake ..; cmake --build .
+Build and install the Python extensions:
+
+cd ..
+python3 setup.py install
+At this point, you should be able to run python3 and type import dlib successfully.
